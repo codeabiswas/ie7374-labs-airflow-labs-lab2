@@ -1,0 +1,11 @@
+# Python venv
+.venv/
+
+# Environment variables
+.env
+
+# Other files to ignore
+__pycache__/
+logs/
+plugins/
+*.pyc

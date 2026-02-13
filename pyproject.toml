@@ -1,0 +1,15 @@
+[project]
+name = "ie7374-labs-airflow-labs-lab2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "apache-airflow>=3.1.7",
+    "dvc[gs]>=3.66.1",
+    "flask>=3.1.2",
+    "numpy>=2.4.2",
+    "pandas>=3.0.0",
+    "scikit-learn>=1.8.0",
+    "scipy>=1.17.0",
+]
