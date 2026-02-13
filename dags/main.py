@@ -120,17 +120,13 @@ def airflow_lab2():
         return model_path
 
     @task
-    def load_model(file_path: str, filename: str = "model.sav") -> int:
+    def load_model(file_path: str, model_path: str) -> int:
         """Load saved model and test set, print score, return first prediction."""
-        import os
         import pickle
-
-        model_dir = "/opt/airflow/model"
 
         with open(file_path, "rb") as f:
             X_train, X_test, y_train, y_test = pickle.load(f)
 
-        model_path = os.path.join(model_dir, filename)
         with open(model_path, "rb") as f:
             model = pickle.load(f)
 
@@ -188,7 +184,7 @@ def airflow_lab2():
     raw_path = load_data()
     preprocessed_path = data_preprocessing(raw_path)
     model_path = build_model(preprocessed_path)
-    prediction = load_model(preprocessed_path)
+    prediction = load_model(preprocessed_path, model_path)
 
     owner_task >> raw_path
     prediction >> [email_success, email_failure] >> trigger_report
